@@ -4,9 +4,9 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="Boeing Work" content="">
+	<meta name="Collisions and Quaternions Projects" content="">
 
-	<title>Boeing Vehicle Maintenance Trainers</title>
+	<title>Collisions and Quaternions</title>
 
 	<!-- Bootstrap Core CSS -->
 	<link href="../vendor/bootstrap/css/bootstrap2.min.css" rel="stylesheet">
@@ -30,7 +30,7 @@
 	<!-- Slick CSS -->
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css'>
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css'>
-	<link rel="stylesheet" href="./css/style2.css">
+	<link rel="stylesheet" href="../css/style2.css">
 
 </head>
 
@@ -41,31 +41,42 @@
 		<!-- Portfolio Modal -->
 	<div class="modal-body" align="center" style="margin-top: 20px;">
 		<!-- Project Details Go Here -->
-		<h2>Interactive Demos</h2>
-		<br>
-		<div><embed width="780" height="480" src="https://www.youtube.com/watch?v=PUwGTCK2ErA" webkitAllowFullScreen mozallowfullscreen allowFullScreen></div>
-		<br>
-		<h3>Overview:</h3> 
-		<p>The video above showcases some of the work done at Boeing to create vehicle maintenance trainers.</p>
-		<h3>Role:</h3> 
-		<p>I have worked on various parts of the maintenance trainers. This includes simulating plane functionality. Whether that is electrical systems, fuel, or flight controls. I made functionality for support equipment that connects to the aircrtaft. I worked on a procedure system that included a grading system. This allows for instructors to see progress of maintenance procedures as they are performed by maintainers in real time on a separate computer.\n\nThe most notable work I did was taking charge on implementing the AR framework for Boeings next generation project standardization. My work included adding features that would be used by maintainers to create procedures. This was done in two ways. The first was that the procedure could be edited using a procedure authoring application. The second is that the authoring application could connect to the AR application and in the AR application, the procedure could be edited. Changes made on both sides would be in sync with each other.</p>
-		<!--<br>-->
-		<ul class="list-inline">
-			<li>Date: October 2024</li>
-			<li>Software: Unity / RHEL (C++)</li>
-			<li>Category: Simulation</li>
-		</ul>
+		<h2>Collisions and Quaternions Projects</h2>
+		</br>
+		<div>
+			<img width="477" height="441" src="../img/portfolio/projectImagesAndGifs/CollisionsProject_1.gif">
+			</br>
+			<h3>Overview:</h3> 
+			<p>This is a series of projects that explore various math topics that are useful for game development (Quaternions, Collision Detection, etc).</p>
+			<h3>Role:</h3> 
+			<p>
+				The original project here started out as a learning experience on how to do collisions in 3d. It started out with axis-aligned bounding boxes. Then we moved onto oriented bounding boxes using separate axis theorem. From there we worked on optimization using a few different methods. The first was to use layered collision detection. Start with a sphere, move onto an axis aligned bounding box, and then finally check the oriented bounding box if necessary. The second method of optimization was to use an octtree to organize objects to determine if collision checks were even necessary. This was done solo.
+				</br></br>
+				The next project evolving form this was a group project. We made a basic game where you jumped from platform to platform looking to reach a goal. My primary role was on creating the text based level editor so we could create a bunch of different levels for the game.
+			</p>
+			</br></br>
+			<img width="959" height="493" src="../img/portfolio/projectImagesAndGifs/CollisionsProject_2.gif">
+			<p>
+				</br>
+				After that, I went to use some of the topics here to create a new project on my own. As I wanted to learn quaternions. So I took what I learned about collision detection and created a quick project with that. Then I wrote a quaternion library that I would use in place of the DirectX Math library to help me understand them. This resulted in a basic project that used my quaternion library to rotate cubes and change their colors when colliding.
+			</p>
+			<img width="959" height="458" src="../img/portfolio/projectImagesAndGifs/CollisionsProject_3.gif">
+			<!--</br>-->
+			<ul class="list-inline">
+				<li>Date: 2015-2021</li>
+				<li>Software: C++ / OpenGL / DirectX</li>
+			</ul>
+		</div>
 	</div>
-	
 	<!-- jQuery -->
 	<script src="../vendor/jquery/jquery.min.js"></script>
 
 	<script> 
 		$(function(){
-			$("#header").load("./header.html"); 
+			$("#header").load("../header.html"); 
 		});
 		$(function(){
-			$("#footer").load("./footer.html"); 
+			$("#footer").load("../footer.html"); 
 		});
 	</script> 
 
@@ -74,8 +85,8 @@
 
 	<!-- Plugin JavaScript -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-	<script src="vendor/scrollreveal/scrollreveal.min.js"></script>
-	<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+	<script src="../vendor/scrollreveal/scrollreveal.min.js"></script>
+	<script src="../vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 	<script>
 	function pauseAllVideos() 
 	{ 

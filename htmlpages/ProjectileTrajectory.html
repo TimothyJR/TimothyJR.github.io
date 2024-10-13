@@ -4,9 +4,9 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="Boeing Work" content="">
+	<meta name="Projectile Trajectory" content="">
 
-	<title>Boeing Vehicle Maintenance Trainers</title>
+	<title>Projectile Trajectory</title>
 
 	<!-- Bootstrap Core CSS -->
 	<link href="../vendor/bootstrap/css/bootstrap2.min.css" rel="stylesheet">
@@ -30,42 +30,52 @@
 	<!-- Slick CSS -->
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css'>
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css'>
-	<link rel="stylesheet" href="./css/style2.css">
+	<link rel="stylesheet" href="../css/style2.css">
 
 </head>
 
 <body id="page-top">
 
 	<div id="header"></div>
-	
-		<!-- Portfolio Modal -->
+
+	<!-- Portfolio Modal -->
 	<div class="modal-body" align="center" style="margin-top: 20px;">
 		<!-- Project Details Go Here -->
-		<h2>Interactive Demos</h2>
-		<br>
-		<div><embed width="780" height="480" src="https://www.youtube.com/watch?v=PUwGTCK2ErA" webkitAllowFullScreen mozallowfullscreen allowFullScreen></div>
-		<br>
-		<h3>Overview:</h3> 
-		<p>The video above showcases some of the work done at Boeing to create vehicle maintenance trainers.</p>
-		<h3>Role:</h3> 
-		<p>I have worked on various parts of the maintenance trainers. This includes simulating plane functionality. Whether that is electrical systems, fuel, or flight controls. I made functionality for support equipment that connects to the aircrtaft. I worked on a procedure system that included a grading system. This allows for instructors to see progress of maintenance procedures as they are performed by maintainers in real time on a separate computer.\n\nThe most notable work I did was taking charge on implementing the AR framework for Boeings next generation project standardization. My work included adding features that would be used by maintainers to create procedures. This was done in two ways. The first was that the procedure could be edited using a procedure authoring application. The second is that the authoring application could connect to the AR application and in the AR application, the procedure could be edited. Changes made on both sides would be in sync with each other.</p>
-		<!--<br>-->
-		<ul class="list-inline">
-			<li>Date: October 2024</li>
-			<li>Software: Unity / RHEL (C++)</li>
-			<li>Category: Simulation</li>
-		</ul>
+		<h2>Projectile Trajectory</h2>
+		</br>
+		<div>
+			<img width="780" height="570" src="../img/portfolio/projectImagesAndGifs/ProjectileTrajectory.png">
+			</br>
+			<h3>Overview:</h3> 
+			<p>A small project to trace the trajectory of a projectile before it is fired.</p>
+			<h3>Role:</h3> 
+			<p>
+				Wrote the code to draw a trajectory for a projectile using physics and raycasts to determine collisions in Unity. Any rigid bodies shot from the starting point with the same initial velocity will follow the expected trajectory.
+			</p>
+			</br></br>
+			<img width="780" height="532" src="../img/portfolio/projectImagesAndGifs/ProjectileTrajectory2.png">
+			</br></br>
+			<p>
+				The code allows for a non-standard gravity that can be set in editor using a vector3.
+				</br>
+			</p>
+			<img width="780" height="580" src="../img/portfolio/projectImagesAndGifs/ProjectileTrajectory3.png">
+			<!--<br>-->
+			<ul class="list-inline">
+				<li>Date: Nov 2020 - Jan 2021</li>
+				<li>Software: Unity (C#)</li>
+			</ul>
+		</div>
 	</div>
-	
 	<!-- jQuery -->
 	<script src="../vendor/jquery/jquery.min.js"></script>
 
 	<script> 
 		$(function(){
-			$("#header").load("./header.html"); 
+			$("#header").load("../header.html"); 
 		});
 		$(function(){
-			$("#footer").load("./footer.html"); 
+			$("#footer").load("../footer.html"); 
 		});
 	</script> 
 
@@ -74,8 +84,8 @@
 
 	<!-- Plugin JavaScript -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-	<script src="vendor/scrollreveal/scrollreveal.min.js"></script>
-	<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+	<script src="../vendor/scrollreveal/scrollreveal.min.js"></script>
+	<script src="../vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 	<script>
 	function pauseAllVideos() 
 	{ 

@@ -4,9 +4,9 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="Boeing Work" content="">
+	<meta name="Starlit Horizon" content="">
 
-	<title>Boeing Vehicle Maintenance Trainers</title>
+	<title>Starlit Horizon</title>
 
 	<!-- Bootstrap Core CSS -->
 	<link href="../vendor/bootstrap/css/bootstrap2.min.css" rel="stylesheet">
@@ -30,42 +30,46 @@
 	<!-- Slick CSS -->
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css'>
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css'>
-	<link rel="stylesheet" href="./css/style2.css">
+	<link rel="stylesheet" href="../css/style2.css">
 
 </head>
 
 <body id="page-top">
 
 	<div id="header"></div>
-	
-		<!-- Portfolio Modal -->
+
+	<!-- Portfolio Modal -->
 	<div class="modal-body" align="center" style="margin-top: 20px;">
 		<!-- Project Details Go Here -->
-		<h2>Interactive Demos</h2>
-		<br>
-		<div><embed width="780" height="480" src="https://www.youtube.com/watch?v=PUwGTCK2ErA" webkitAllowFullScreen mozallowfullscreen allowFullScreen></div>
-		<br>
-		<h3>Overview:</h3> 
-		<p>The video above showcases some of the work done at Boeing to create vehicle maintenance trainers.</p>
-		<h3>Role:</h3> 
-		<p>I have worked on various parts of the maintenance trainers. This includes simulating plane functionality. Whether that is electrical systems, fuel, or flight controls. I made functionality for support equipment that connects to the aircrtaft. I worked on a procedure system that included a grading system. This allows for instructors to see progress of maintenance procedures as they are performed by maintainers in real time on a separate computer.\n\nThe most notable work I did was taking charge on implementing the AR framework for Boeings next generation project standardization. My work included adding features that would be used by maintainers to create procedures. This was done in two ways. The first was that the procedure could be edited using a procedure authoring application. The second is that the authoring application could connect to the AR application and in the AR application, the procedure could be edited. Changes made on both sides would be in sync with each other.</p>
-		<!--<br>-->
-		<ul class="list-inline">
-			<li>Date: October 2024</li>
-			<li>Software: Unity / RHEL (C++)</li>
-			<li>Category: Simulation</li>
-		</ul>
+		<h2>Starlit Horizon</h2>
+		</br>
+		<div>
+			</br>
+			<h3>Overview:</h3>
+			<p>An action game aimed at feeling smooth and giving depth through weapon switching.</br></p>
+			<h3>Project:</h3>
+			<p>
+				The goal of thise game is to create combat system that is gives the chance for customization in how they play and avoids the player having to fight the controls. This project was developed using the gameplay ability system released by Epic Games. The player has a weak attack, a strong attack, and a set of skills linked to the weapons they have equipped. They have a set of two weapons equipped. One for their weak attack and one for their strong attack. They can weave combos between the two. This means that if you do two weak attacks, you can do a heavy attack with the third heavy attack in that weapon's heavy attack combo chain. You can have three weapon sets at a time. Easily switching between them with the press of a button. This also does not break any combos. Meaning you can really customize your combos using different attacks from up to six different weapons. Each weapon set also has its own skills.
+				</br></br>
+				To make combat feel smooth, the first thing implemented was input buffering. This adds a period of time after attacking, dodging, etc. that you can buffer your next action to make sure no input is missed and actions start as soon as they can. Next is to make sure that the player should move when feel they should be able to, not when an animation is waiting to end. To do this, actions can be cancelled early, giving players more control over how their character acts.
+				</br>
+			</p>
+			<!--<br>-->
+			<ul class="list-inline">
+				<li>Date: Nov 2022 - Present</li>
+				<li>Software: Unreal Engine (C++ / Blueprints)</li>
+			</ul>
+		</div>
 	</div>
-	
 	<!-- jQuery -->
 	<script src="../vendor/jquery/jquery.min.js"></script>
 
 	<script> 
 		$(function(){
-			$("#header").load("./header.html"); 
+			$("#header").load("../header.html"); 
 		});
 		$(function(){
-			$("#footer").load("./footer.html"); 
+			$("#footer").load("../footer.html"); 
 		});
 	</script> 
 
@@ -74,8 +78,8 @@
 
 	<!-- Plugin JavaScript -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-	<script src="vendor/scrollreveal/scrollreveal.min.js"></script>
-	<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+	<script src="../vendor/scrollreveal/scrollreveal.min.js"></script>
+	<script src="../vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 	<script>
 	function pauseAllVideos() 
 	{ 
