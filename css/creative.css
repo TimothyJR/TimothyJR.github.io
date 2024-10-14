@@ -86,6 +86,10 @@ aside {
   padding-top: 10px;
 }
 
+.navBarSpace{
+	padding-top: 50px;
+}
+
 .leftcolumn {
 	float: left;
 	width: 25%;
@@ -230,7 +234,7 @@ aside {
   transition: all 0.35s;
 }
 .navbar-default .navbar-header .navbar-brand {
-  color: #3e68ca;
+  color: #7ec788;
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
   font-weight: 700;
   text-transform: uppercase;
@@ -254,11 +258,11 @@ aside {
 }
 .navbar-default .nav > li > a:hover,
 .navbar-default .nav > li > a:focus:hover {
-  color: #3e68ca;
+  color: #7ec788;
 }
 .navbar-default .nav > li.active > a,
 .navbar-default .nav > li.active > a:focus {
-  color: #3e68ca !important;
+  color: #7ec788 !important;
   background-color: transparent;
 }
 .navbar-default .nav > li.active > a:hover,
@@ -290,7 +294,7 @@ aside {
     border-color: rgba(34, 34, 34, 0.05);
   }
   .navbar-default.affix .navbar-header .navbar-brand {
-    color: #3e68ca;
+    color: #7ec788;
     font-size: 14px;
   }
   .navbar-default.affix .navbar-header .navbar-brand:hover,
@@ -303,7 +307,7 @@ aside {
   }
   .navbar-default.affix .nav > li > a:hover,
   .navbar-default.affix .nav > li > a:focus:hover {
-    color: #3e68ca;
+    color: #7ec788;
   }
 }
 header {
