@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="Corys Work" content="">
+
+	<title>Locomotive Simulations</title>
+
+	<!-- Bootstrap Core CSS -->
+	<link href="../vendor/bootstrap/css/bootstrap2.min.css" rel="stylesheet">
+
+	<link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+	<!-- Theme CSS -->
+	<!--<link href="css/agency.min.css" rel="stylesheet">-->
+	<link href="../css/creative2.css" rel="stylesheet">
+
+	<!-- Custom Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+	<!-- Plugin CSS -->
+	<link href="../vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+	<!-- Image JavaScript -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+	<!-- Slick CSS -->
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css'>
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css'>
+	<link rel="stylesheet" href="../css/style2.css">
+
+</head>
+
+<body id="page-top">
+
+	<div id="header"></div>
+	
+		<!-- Portfolio Modal -->
+	<div class="modal-body" align="center" style="margin-top: 20px;">
+		<!-- Project Details Go Here -->
+		<h2>Locomotive Simulations at CORYS</h2>
+		</br>
+		<div>
+			<iframe width="780" height="480" src="https://www.youtube.com/embed/of9EhC6DDyg?si=E_93GCCMRloepC7j" allowfullscreen></iframe>
+			</br>
+			<h3>Overview:</h3> 
+			<p>The video above showcasesan overview of the simulators created by the transportation team at CORYS.</p>
+			<h3>Role:</h3> 
+			<p>
+				My primary work at CORYS has been working on the systems for wireless crossings and cab signals.
+				</br>
+				</br>
+				Wireless crossings are special railroad crossings found next to stations. When a train comes from the opposite side of the station, the crossing does not set down the barriers and instead waits until the train is getting ready to depart. The express option that I worked on allows train operators to override this behavior. It would be used in the case of a train that doesn't need to stop at a station. They can go through a menu on one of the screens of the train that would let them select stations that they can pass by and the crossings would behave like regular railroad crossings and drop the barriers on approach.
+				</br>
+				</br>
+				Cab signals are wireless tranmissions that travel through rail lines to the trains. They send information to the train about speed limits. Based on the transmission, the signals behind and ahead of the train, rules are created to enforce speed limits on the train.
+			</p>
+			<!--</br>-->
+			<ul class="list-inline">
+				<li>Date: Current</li>
+				<li>Software: C++ Proprietary Engine</li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- jQuery -->
+	<script src="../vendor/jquery/jquery.min.js"></script>
+
+	<script> 
+		$(function(){
+			$("#header").load("../header.html"); 
+		});
+		$(function(){
+			$("#footer").load("../footer.html"); 
+		});
+	</script> 
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="../vendor/bootstrap/js/bootstrap2.min.js"></script>
+
+	<!-- Plugin JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+	<script src="../vendor/scrollreveal/scrollreveal.min.js"></script>
+	<script src="../vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+	<script>
+	function pauseAllVideos() 
+	{ 
+		$("embed").each(function() { 
+			var src= $(this).attr('src');
+			$(this).attr('src',src);  
+		});
+	}
+	</script>
+	<script>
+	$(document).ready(function() {
+		var $anchor = $(this);
+		$('html, body').stop().animate({
+			scrollTop: ($($anchor.attr('href')).offset().top - 50)
+		}, 1250, 'easeInOutExpo');
+		event.preventDefault();
+	});
+	</script>
+	
+	<!-- Theme JavaScript -->
+	<script src="../js/creative2.min.js"></script>
+	
+
+</body>
+	<div id="footer">
+</div>
+</html>
