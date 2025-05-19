@@ -301,14 +301,14 @@ body {
   transform: translate(-50%, -50%);
   z-index: 2;
   transition: all 0.4s ease-in;
-  opacity: 0;
+  opacity: 0.5;
 }
 .timeline__item--active .timeline__item__year, .timeline__link:hover ~ .timeline__item__year {
   color: #3e68ca;
   font-size: 26px;
   font-weight: bold;
 }
-.timeline__item:nth-child(3n+1) .timeline__item__year {
+.timeline__item:nth-child(2n+1) .timeline__item__year {
   opacity: 1;
 }
 
