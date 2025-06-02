@@ -191,96 +191,111 @@
 						"html_page": "Corys.html",
 						"project_category": "Corys",
 						"project_description": "Train Simulations (C++)",
-						"project_image": "Corys.png"
+						"project_image": "Corys.png",
+						"active": true
 					},
 					{
 						"html_page": "Boeing.html",
 						"project_category": "Boeing",
 						"project_description": "Vehicle Maintenance Training (C++ / C#)",
-						"project_image": "Boeing.png"
+						"project_image": "Boeing.png",
+						"active": true
 					},
 					{
 						"html_page": "StarlitHorizon.html",
 						"project_category": "Starlit Horizon",
 						"project_description": "Unreal Engine 5 / C++ / Blueprints",
-						"project_image": "StarlitHorizon.png"
+						"project_image": "StarlitHorizon.png",
+						"active": true
 					},
 					{
 						"html_page": "GameMath.html",
 						"project_category": "Collisions and Quaternions Projects",
 						"project_description": "C++ / DirectX",
-						"project_image": "Collisions.png"
+						"project_image": "Collisions.png",
+						"active": true
 					},
 					{
 						"html_page": "GoneFishing.html",
 						"project_category": "Gone Fishing",
 						"project_description": "Unity / C#",
-						"project_image": "GoneFishing.png"
+						"project_image": "GoneFishing.png",
+						"active": true
 					},
 					{
 						"html_page": "SteeringBehaviors.html",
 						"project_category": "Steering Behaviors and Job System",
 						"project_description": "Unity / C#",
-						"project_image": "SteeringBehaviors.png"
+						"project_image": "SteeringBehaviors.png",
+						"active": true
 					},
 					{
 						"html_page": "Pathfinding.html",
 						"project_category": "Pathfinding AI",
 						"project_description": "Unity / C#",
-						"project_image": "PathFinding.png"
+						"project_image": "PathFinding.png",
+						"active": true
 					},
 					{
 						"html_page": "CityBuilder.html",
 						"project_category": "City Building Tool",
 						"project_description": "Unity Tools / C#",
-						"project_image": "CityBuilder.png"
+						"project_image": "CityBuilder.png",
+						"active": false
 					},
 					{
 						"html_page": "ProjectileTrajectory.html",
 						"project_category": "Physics Projectile Trajectory",
 						"project_description": "Unity / C#",
-						"project_image": "ProjectileTrajectory.png"
+						"project_image": "ProjectileTrajectory.png",
+						"active": true
 					},
 					{
 						"html_page": "BurstParticles.html",
 						"project_category": "Burst Particle System",
 						"project_description": "C++ / DirectX",
-						"project_image": "ParticleSystem.png"
+						"project_image": "ParticleSystem.png",
+						"active": false
 					},
 					{
 						"html_page": "TileSystem.html",
 						"project_category": "Tile System",
 						"project_description": "Unity / C#",
-						"project_image": "TileSystem.png"
+						"project_image": "TileSystem.png",
+						"active": true
 					},
 
 					{
 						"html_page": "RayMarching.html",
 						"project_category": "Ray Marching",
 						"project_description": "Unity / C# / ShaderLab",
-						"project_image": "Raymarching.png"
+						"project_image": "Raymarching.png",
+						"active": false
 					}
 				]
 			};
 
 		for (i=0; i < json_portfolio.pages.length; i++)
 		{
-			document.getElementById("portfolio_boxes").innerHTML +=
-			'<div class="col-lg-4 col-sm-6">' +
-				'<a href="htmlpages/' + json_portfolio.pages[i].html_page +'" class="portfolio-box" data-toggle="modal">' +
-					'<img src="img/portfolio/thumbnails/' + json_portfolio.pages[i].project_image + '" class="img-responsive" alt="">' +
-					'<div class="portfolio-box-caption">' +
-						'<div class="portfolio-box-caption-content">' +
-							'<div class="project-category text-faded">' +
-								json_portfolio.pages[i].project_category +
-							'</div>' +
-							'<div class="project-name">' +
-								json_portfolio.pages[i].project_description +
+			if(json_portfolio.pages[i].active == true)
+			{
+				document.getElementById("portfolio_boxes").innerHTML +=
+				'<div class="col-lg-4 col-sm-6">' +
+					'<a href="htmlpages/' + json_portfolio.pages[i].html_page +'" class="portfolio-box" data-toggle="modal">' +
+						'<img src="img/portfolio/thumbnails/' + json_portfolio.pages[i].project_image + '" class="img-responsive" alt="">' +
+						'<div class="portfolio-box-caption">' +
+							'<div class="portfolio-box-caption-content">' +
+								'<div class="project-category text-faded">' +
+									json_portfolio.pages[i].project_category +
+								'</div>' +
+								'<div class="project-name">' +
+									json_portfolio.pages[i].project_description +
+								'</div>' +
 							'</div>' +
 						'</div>' +
-					'</div>' +
-				'</a>' +
-			'</div>'
+					'</a>' +
+				'</div>'
+			}
 		}
 	</script>
 

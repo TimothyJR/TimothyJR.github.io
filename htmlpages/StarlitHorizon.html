@@ -49,14 +49,24 @@
 			<p>An action game aimed at feeling smooth and giving depth through weapon switching.</br></p>
 			<h3>Project:</h3>
 			<p>
-				The combat system for <i>Starlit Horizon</i> revolves around its weapons. Each weapon features unique combos for both fast and strong attacks. The video below demonstrates these in action, fast attacks on the left, strong attacks on the right:
+				The combat system for <i>Starlit Horizon</i> revolves around its weapons. Each weapon features combos for both fast and strong attacks. The video below demonstrates these in action, fast attacks on the left, strong attacks on the right:
 			</p></br>
-				<div><video width="780" height="438" controls><source  src="../img/portfolio/videos/FastStrongAttack.mov"> There should be a video here showcasing fast and strong attacks.</video></div>
+			<div><video width="780" height="438" controls><source  src="../img/portfolio/videos/FastStrongAttack.mov"> There should be a video here showcasing fast and strong attacks.</video></div>
 			<p></br>
-				The player can seamlessly alternate between fast and strong attacks within a single combo. For example: Fast Attack 1 -> Fast Attack 2 -> Strong Attack 3 -> Fast Attack 4. Additionally, the system allows mid-combo weapon switching. Players can equip up to three different weapon sets, each with distinct fast and strong attack patterns. Here is an example of that mechanic in action, switching between three weapons - whip, martial arts, rapier:
+				To create these abilities, I used the Gameplay Ability System in Unreal engine. To start, there is the attack ability. This ability stores most of the information needed for creating our combos, with the most important being the animations for both the character and the weapons (if any). A weapon then holds two of these for the fast attack and the strong attack combos. When the weapon is equipped to a character, we use the ability system component to grant the appropriate ability.
+				</br></br>
+				We store the current combo index separate from the weapon. The reason is that the player can alternate between the fast and strong combos without resetting between. For example:
+				</br></br>
+				Fast Attck 1 -> Fast Attack 2 -> Strong Attack 3 -> Fast Attack 4 -> End of Combo Reset
+				</br></br>
+				Additionally, the system allows mid-combo weapon switching. To achieve this, the player has weapon sets. Each weapon set contains two weapons. One for the fast attack and one for the strong attack. The animation to play while attacking is chosen based on which weapon set is equipped and which type of attack is triggered. Here is a video of that mechanic in action, switching between three weapons - whip, martial arts, rapier:
 			</P></br>
-				<div><video width="780" height="438" controls><source  src="../img/portfolio/videos/AttackChain.mov"> There should be a video here showcasing weapon switching.</video></div>
-			<!--<br>-->
+			<div><video width="780" height="438" controls><source  src="../img/portfolio/videos/AttackChain.mov"> There should be a video here showcasing weapon switching.</video></div>
+			<p></br>
+				The below video shows a bit more of the system overall being used against a training dummy. Using animation notifies, the colliders and VFX are turned on/off. To get a better game feel, we mark when an ability can be interrupted, allowing for the combo to smoothly transition to the next, or allow other actions like dodging without feeling like the player is stuck in an action.
+			</P></br>
+			<div><video width="780" height="438" controls><source  src="../img/portfolio/videos/WeaponSystemShowcase.mov"> There should be a video here showcasing weapon switching against a training dummy.</video></div>
+			<br>
 			<ul class="list-inline">
 				<li>Date: Nov 2022 - Present</li>
 				<li>Software: Unreal Engine (C++ / Blueprints)</li>

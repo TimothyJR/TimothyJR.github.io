@@ -44,24 +44,70 @@
 		<h2>Collisions and Quaternions Projects</h2>
 		</br>
 		<div>
-			<img width="477" height="441" src="../img/portfolio/projectImagesAndGifs/CollisionsProject_1.gif">
 			</br>
 			<h3>Overview:</h3> 
 			<p>This is a series of projects that explore various math topics that are useful for game development (Quaternions, Collision Detection, etc).</p>
 			<h3>Role:</h3> 
 			<p>
-				The original project here started out as a learning experience on how to do collisions in 3d. It started out with axis-aligned bounding boxes. Then we moved onto oriented bounding boxes using separate axis theorem. From there we worked on optimization using a few different methods. The first was to use layered collision detection. Start with a sphere, move onto an axis aligned bounding box, and then finally check the oriented bounding box if necessary. The second method of optimization was to use an octtree to organize objects to determine if collision checks were even necessary. This was done solo.
-				</br></br>
-				The next project evolving form this was a group project. We made a basic game where you jumped from platform to platform looking to reach a goal. My primary role was on creating the text based level editor so we could create a bunch of different levels for the game.
+				The first project started out as a learning experience for box collisions in 3d. Axis aligned bounding boxes were the first to tackle and they were quite easy.
+				<pre><code>
+if (max1.x < min2.x || min1.x > max2.x ||
+	max1.y < min2.y || min1.y > max2.y ||
+	max1.z < min2.z || min1.z > max2.z)
+				</code></pre>
 			</p>
-			</br></br>
-			<img width="959" height="493" src="../img/portfolio/projectImagesAndGifs/CollisionsProject_2.gif">
 			<p>
-				</br>
-				After that, I went to use some of the topics here to create a new project on my own. As I wanted to learn quaternions. So I took what I learned about collision detection and created a quick project with that. Then I wrote a quaternion library that I would use in place of the DirectX Math library to help me understand them. This resulted in a basic project that used my quaternion library to rotate cubes and change their colors when colliding.
+				The next objective was oriented bounding boxes using separate axis theorem. To start, we get the test axes, which are all the axes perpendicular to our shape.
+				<pre>
+std::vector<DirectX::XMVECTOR> testAxis;<br>
+// Do this for the x, y, z axes of both box1 and box2<br>
+DirectX::XMFLOAT3 box1X = box1.GetTransform()->GetRotation().RotateVector(DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f));<br>
+testAxis.push_back(DirectX::XMLoadFloat3(&box1X));<br>
+<br>
+for (int i = 0; i < 3; i++)<br>
+{<br>
+&emsp;&emsp;&emsp;for (int j = 3; j < 6; j++)<br>
+&emsp;&emsp;&emsp;{<br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;if (std::abs(DirectX::XMVectorGetByIndex(DirectX::XMVector3Dot(testAxis[i], testAxis[j]), 0)) < 0.995f)<br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{<br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;testAxis.push_back(DirectX::XMVector3Normalize(DirectX::XMVector3Cross(testAxis[i], testAxis[j])));<br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;}<br>
+&emsp;&emsp;&emsp;}<br>
+}
+					</pre>
+			</P>
+			<p>
+				From there, we'll project each cube onto the test axis and see if they are intersecting. If any one test does not result in an intersection, there is no collision.
+				<pre>
+for (unsigned i = 0; i < testAxis.size(); i++)<br>
+{<br>
+&emsp;&emsp;&emsp;float distance = std::abs(<br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;DirectX::XMVectorGetByIndex(<br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;DirectX::XMVector3Dot(<br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;positionDifference,<br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;testAxis[i]),<br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;0));<br>
+<br>
+&emsp;&emsp;&emsp;float leftSide = box1.GreatestPointAlongAxis(testAxis[i]);<br>
+&emsp;&emsp;&emsp;float rightSide = box2.GreatestPointAlongAxis(testAxis[i]);<br>
+<br>
+&emsp;&emsp;&emsp;if (distance > leftSide + rightSide)<br>
+&emsp;&emsp;&emsp;{<br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;return false;<br>
+&emsp;&emsp;&emsp;}<br>
+}
+				</pre>
+			</p>
+			<p>
+				The result ended up looking like this:
+			</p>
+			<img width="477" height="441" src="../img/portfolio/projectImagesAndGifs/CollisionsProject_1.gif">
+			</br></br>
+			<p>
+				After this came the next learning project. It was about quaternions. The code for that can be found at <a href="https://github.com/TimothyJR/GameMath/blob/main/GameMath/Quaternion.cpp">here</a>. Using my quaternion implementation, I made a little example, using cubes that are rotating and changing materials when they intersect with each other:
 			</p>
 			<img width="959" height="458" src="../img/portfolio/projectImagesAndGifs/CollisionsProject_3.gif">
-			<!--</br>-->
+			</br></br>
 			<ul class="list-inline">
 				<li>Date: 2015-2021</li>
 				<li>Software: C++ / OpenGL / DirectX</li>

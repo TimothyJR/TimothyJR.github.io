@@ -16,6 +16,20 @@ hr {
   border-width: 3px;
   max-width: 50px;
 }
+
+pre {
+	white-space: nowrap;
+	word-wrap: normal;
+	width: 42%;
+	display:block;
+	text-align: left;
+	padding: 30px;
+	overflow-x:auto;
+}
+code {
+	white-space: nowrap;
+	overflow-x:auto;
+}
 hr.light {
   border-color: white;
 }
