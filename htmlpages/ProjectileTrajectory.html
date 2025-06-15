@@ -50,14 +50,52 @@
 			<p>A small project to trace the trajectory of a projectile before it is fired.</p>
 			<h3>Role:</h3> 
 			<p>
-				Wrote the code to draw a trajectory for a projectile using physics and raycasts to determine collisions in Unity. Any rigid bodies shot from the starting point with the same initial velocity will follow the expected trajectory.
+				This is a project to draw a trajectory line from a launch point to a collision point using physics and raycasts. It makes use of the physics equation to calculate the position of a projectile:
+				<pre>
+x<sub>o</sub> + v<sub>o</sub>t + <sup>1</sup>&frasl;<sub>2</sub> at<sup>2</sup>
+				</pre>
 			</p>
-			</br></br>
-			<img width="780" height="532" src="../img/portfolio/projectImagesAndGifs/ProjectileTrajectory2.png">
+			<p>
+				The basic premise is to ray cast along the expected trajectory using the equation above.
+			</p>
+						<img width="780" height="532" src="../img/portfolio/projectImagesAndGifs/ProjectileTrajectory2.png">
 			</br></br>
 			<p>
-				The code allows for a non-standard gravity that can be set in editor using a vector3.
-				</br>
+				To get how long to raycast, we first decide a maximum amount of simulation time to check. Simulation time is the amount of time the projectile would move if fired. Then we decide on a trace resolution. This is the maximum number of ray traces we will do if no collision occurs. The higher the value, the more accurate the check, but the higher the performance cost. We divide the maximum simulation time by the trace resolution to get the amount of simulation time per ray cast.
+			</p>
+			</br>
+			<p>
+				From here, we know our starting point of our projectile. This will work as the starting point of the first raycast. Then we can use our physics equation above to calculate the position of the projectile at the end of our first time step. If a hit occurs, we are done and can spawn something at that point to let the player know. Otherwise we repeat the process.
+				<pre>
+while(!hitHappened && index < traceResolution + 1)</br>
+{</br>
+&emsp;&emsp;&emsp;time = Mathf.Min(time + raycastStep, maxTime);</br>
+&emsp;&emsp;&emsp;nextPosition = GetPositionAtTime(transform.position, startVelocity, time, Physics.gravity); // This is where our physics equation is called!</br>
+</br>
+&emsp;&emsp;&emsp;// Raycast from the last position to the next position</br>
+&emsp;&emsp;&emsp;if(Physics.Linecast(lastPosition, nextPosition, out hit))</br>
+&emsp;&emsp;&emsp;{</br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;// We hit something</br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;hitHappened = true;</br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;lastPosition = hit.point;</br>
+</br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // Optional: We can set our hit display object to rotate based on the normal of whatever we hit</br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;spawnedHitMarker.transform.rotation = Quaternion.LookRotation(hit.normal);</br>
+&emsp;&emsp;&emsp;}</br>
+&emsp;&emsp;&emsp;else</br>
+&emsp;&emsp;&emsp;{</br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;// We did not hit, get ready for next loop</br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;lastPosition = nextPosition;</br>
+&emsp;&emsp;&emsp;}</br>
+}</br>
+</br>
+// Assign the number of points on our trajectory to draw</br>
+line.positionCount = index;</br>
+</br>
+// Move our marker object to the proper position</br>
+// If we don't want to show the hit marker if we didn't hit (or show a different marker), we can always just check for hitHappened</br>
+spawnedHitMarker.transform.position = line.GetPosition(index - 1);</br>
+				</pre>
 			</p>
 			<img width="780" height="580" src="../img/portfolio/projectImagesAndGifs/ProjectileTrajectory3.png">
 			<!--<br>-->
