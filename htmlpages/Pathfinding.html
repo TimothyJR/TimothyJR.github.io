@@ -50,13 +50,23 @@
 			<p>A project to show off some of the common path finding algorithms.</p>
 			<h3>Role:</h3> 
 			<p>
-				This is a solo project created by me to make sure I knew the common path finding algorithms. The algorithms implemented in this project include breadth first search, depth first search, Dijkstra's, and A* pathfining. The grid will show its progress as it thinks about which path to take until it finds the path to the goal, in which case it will highlight the path that it found.
+				This is a project to implement the common path finding algorithms. This includes breadth first search, depth first search, Dijkstra's, and A* pathfinding. The grid shows the progress of the algorithm as it takes each step in figuring out which path to take. For this project I will just talk about the A* path finding algorithm implementation.
+				</br></br>
+				To start we take the starting node and look at each of the connected nodes. We make sure we aren't at the end node, and then we take a look at whether we can travel to the node (might not be traversable), the cost to travel to, and a heuristic, we can see if a node is worth checking.
+				<pre>
+if(nodeToCheck.Traversable && nodeToCheck.TravelCost + currentNode.CostToStart < nodeToCheck.CostToStart)
+				</pre>
+			</p>
+			<p>
+				We always check the next node doesn't have a shorter path to start than a path we have already checked. Since if the path to the next node is longer than a path we already found to it, it can never be the fastest path. If we find that it is worth checking, we update the cost to start for the node and we add it to a priority queue. The value to determine the priority in the queue is the cost to start added to a heuristic. Because of the simple nature of this, the heuristic is just the distance from the node we are checking and the end node. The node size makes this a pretty good heuristic when taking into account the travel cost of the tiles.
+				</br></br>
+				Once we have went through the four adjacent tiles and anything has been added to the priority queue that should be, we just loop and try again. Instead of using the starting node, we will just grab the best node from the priority queue and check that one. We continue this until we hit the end node.
 			</p>
 			</br></br>
 			<img width="780" height="422" src="../img/portfolio/projectImagesAndGifs/AStarStart.png">
 			</br></br>
 			<p>
-				In addition, I made a custom editor that allows you to change the grid by adding in unpassable tiles. In addition it is also possible to add weight to each tile to affect how the algorithm finds its path.
+				To test the algorithms I created a custom editor that allows you to set attributes for the grid. You can set tiles as unpassable or add a cost to travel for each tile to modify what path is fastest.
 				</br>
 			</p>
 			<img width="516" height="937" src="../img/portfolio/projectImagesAndGifs/AStarNodeGridComponent.png">
