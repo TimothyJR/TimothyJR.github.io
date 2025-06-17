@@ -1,37 +1,62 @@
 <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
 	<div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
-		<div class="navbar-header">
+		<div class="navbar-header" id="navigationHeader">
 			<button type="button" onclick="pauseAllVideos();" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 				<span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
 			</button>
-			 <img src="/img/TimothyReuterLogo.png" class="leftcolumn" style="margin-top: 0px;" alt="logo">
-			<a class="navbar-brand page-scroll" href="/index.html#page-top">Timothy Reuter</a> <!-- to fix top overlap: disable font-size: 18px; in navbar-brand in bootstrap.min.cs:5 -->
+			<img src="/img/TimothyReuterLogo.png" class="leftcolumn" style="margin-top: 0px;" alt="logo">
+			<script>
+				var sPageURL = window.location.search.substring(1);
+				if (sPageURL.length == 0)
+				{
+					pageDefinition = "gameplay";
+				}
+				else
+				{
+					pageDefinition = sPageURL;
+				}
+				document.getElementById("navigationHeader").innerHTML +=
+				'<a class="navbar-brand page-scroll" href="/index.html?' + pageDefinition + '#page-top">Timothy Reuter</a>'
+			</script>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav navbar-right">
-				<!--<li>
-					<a class="page-scroll" href="#demoreel">Demo Reel</a>
-				</li>-->
-				<li>
-					<a class="page-scroll" href="/index.html#portfolio">Portfolio</a>
-				</li>
-				<li>
-					<a class="page-scroll" href="/index.html#about">About</a>
-				</li>
-				<li>
-					<a class="page-scroll" href="/index.html#timeline">Work History</a>
-				</li>
-				<li>
-					<a class="page-scroll" href="/index.html#contact">Contact</a>
-				</li>
-				<li>
-					<!-- Keep in mind: This only works on the live website, does not work locally -->
-					<a class="page-scroll" href="/index.html#services" onClick=window.open("/img/Resume_TimothyReuter.pdf");>Resume</a>
-				</li>
-			</ul>
+			<script type="text/javascript">
+				var sPageURL = window.location.search.substring(1);
+				if (sPageURL.length == 0)
+				{
+					pageDefinition = "gameplay";
+				}
+				else
+				{
+					pageDefinition = sPageURL;
+				}
+
+				document.getElementById("bs-example-navbar-collapse-1").innerHTML +=
+					'<ul class="nav navbar-nav navbar-right">' +
+						'<!--<li>' +
+							'<a class="page-scroll" href="/index.html?' + pageDefinition + '#demoreel">Demo Reel</a>' +
+						'</li>-->' +
+						'<li>' +
+							'<a class="page-scroll" href="/index.html?' + pageDefinition + '#portfolio">Portfolio</a>' +
+						'</li>' +
+						'<li>' +
+							'<a class="page-scroll" href="/index.html?' + pageDefinition + '#about">About</a>' +
+						'</li>' +
+						'<li>' +
+							'<a class="page-scroll" href="/index.html?' + pageDefinition + '#timeline">Work History</a>' +
+						'</li>' +
+						'<li>' +
+							'<a class="page-scroll" href="/index.html?' + pageDefinition + '#contact">Contact</a>' +
+						'</li>' +
+						'<li>' +
+							'<!-- Keep in mind: This only works on the live website, does not work locally -->' +
+							'<a class="page-scroll" href="/index.html?' + pageDefinition + '#services" onClick=window.open("/img/Resume_TimothyReuter.pdf");>Resume</a>' +
+						'</li>' +
+					'</ul>'
+				</script>
 		</div>
 		<!-- /.navbar-collapse -->
 	</div>

@@ -37,47 +37,10 @@
 
 <body id="page-top">
 
-	<!--<div id="header"></div>-->
+	<div id="header"></div>
 
-	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-		<div class="container-fluid">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" onclick="pauseAllVideos();" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-				</button>
-				<img src="img/TimothyReuterLogo.png" class="leftcolumn" style="margin-top: 0px;" alt="logo">
-				<a class="navbar-brand page-scroll" href="#page-top">Timothy Reuter</a> <!-- to fix top overlap: disable font-size: 18px; in navbar-brand in bootstrap.min.cs:5 -->
-			</div>
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav navbar-right">
-					<!--<li>
-						<a class="page-scroll" href="#demoreel">Demo Reel</a>
-					</li>-->
-					<li>
-						<a class="page-scroll" href="#portfolio">Portfolio</a>
-					</li>
-					<li>
-						<a class="page-scroll" href="#about">About</a>
-					</li>
-					<li>
-						<a class="page-scroll" href="#timeline">Work History</a>
-					</li>
-					<li>
-						<a class="page-scroll" href="#contact">Contact</a>
-					</li>
-					<li>
-						<a class="page-scroll" href="#services" onClick=window.open("/img/Resume_TimothyReuter.pdf");>Resume</a>
-					</li>
-				</ul>
-			</div>
-			<!-- /.navbar-collapse -->
-		</div>
-		<!-- /.container-fluid -->
-	</nav>
 	<!-- Remove this when there is a demo reel to show -->
-	<div class="navBarSpace bg-dark"/>
+	<!--<div class="navBarSpace bg-dark"/>-->
 	<!-- Add demo reel here
 	<div id="demoreel">
 		<div class="video-container">
@@ -167,7 +130,46 @@
 	<script src="vendor/jquery/jquery.min.js"></script>
 	<script> 
 		$(function(){
-			$("#header").load("header.html"); 
+			$("#header").load("header.html", function ()
+			{
+				$('#header').on('click', 'a[href*="#"]', function(e)
+				{
+					const href = $(this).attr('href');
+					const hashIndex = href.indexOf('#');
+					if (hashIndex !== -1)
+					{
+						const hash = href.substring(hashIndex); // e.g. "#portfolio"
+						const target = $(hash);
+						if (target.length)
+						{
+							e.preventDefault(); // Stop browser jump/refresh
+							// Use pushState to update the URL if needed
+							const baseUrl = window.location.href.split('#')[0].split('?')[0];
+							const queryString = window.location.search;
+							history.pushState(null, '', baseUrl + queryString + hash);
+							// Smooth scroll
+							$('html, body').animate(
+							{
+								scrollTop: target.offset().top
+							}, 500);
+						}
+					}
+				})
+
+				$(window).on('scroll', function ()
+				{
+					if($(window).scrollTop() > 100)
+					{
+						$('#mainNav').addClass('affix');
+						$('#mainNav').removeClass('affix-top');
+					}
+					else
+					{
+						$('#mainNav').addClass('affix-top');
+						$('#mainNav').removeClass('affix');
+					}
+				})
+			})
 		});
 		$(function(){
 			$("#footer").load("footer.html"); 
@@ -184,81 +186,98 @@
 
 	<!-- Portfolio Projects -->
 	<script type="text/javascript">
-		let json_portfolio =
+		var sPageURL = window.location.search.substring(1);
+		var sURLVariables;
+		var pageDefinition;
+		if (sPageURL.includes("#"))
+		{
+			sURLVariables = sPageURL.split('#');
+			pageDefinition = sURLVariables[0];
+		}
+		else
+		{
+			pageDefinition = sPageURL;
+		}
+
+		var json_portfolio;
+
+		if (pageDefinition == "" || pageDefinition == "gameplay")
+		{
+			json_portfolio =
 			{
 				"pages": [
 					{
-						"html_page": "Corys.html",
+						"html_page": "Corys.html?gameplay",
 						"project_category": "Corys",
 						"project_description": "Train Simulations (C++)",
 						"project_image": "Corys.png",
 						"active": true
 					},
 					{
-						"html_page": "Boeing.html",
+						"html_page": "Boeing.html?gameplay",
 						"project_category": "Boeing",
 						"project_description": "Vehicle Maintenance Training (C++ / C#)",
 						"project_image": "Boeing.png",
 						"active": true
 					},
 					{
-						"html_page": "StarlitHorizon.html",
+						"html_page": "StarlitHorizon.html?gameplay",
 						"project_category": "Starlit Horizon",
 						"project_description": "Unreal Engine 5 / C++ / Blueprints",
 						"project_image": "StarlitHorizon.png",
 						"active": true
 					},
 					{
-						"html_page": "GameMath.html",
+						"html_page": "GameMath.html?gameplay",
 						"project_category": "Collisions and Quaternions Projects",
 						"project_description": "C++ / DirectX",
 						"project_image": "Collisions.png",
 						"active": true
 					},
 					{
-						"html_page": "GoneFishing.html",
+						"html_page": "GoneFishing.html?gameplay",
 						"project_category": "Gone Fishing",
 						"project_description": "Unity / C#",
 						"project_image": "GoneFishing.png",
 						"active": true
 					},
 					{
-						"html_page": "SteeringBehaviors.html",
+						"html_page": "SteeringBehaviors.html?gameplay",
 						"project_category": "Steering Behaviors and Job System",
 						"project_description": "Unity / C#",
 						"project_image": "SteeringBehaviors.png",
 						"active": true
 					},
 					{
-						"html_page": "Pathfinding.html",
+						"html_page": "Pathfinding.html?gameplay",
 						"project_category": "Pathfinding AI",
 						"project_description": "Unity / C#",
 						"project_image": "PathFinding.png",
 						"active": true
 					},
 					{
-						"html_page": "CityBuilder.html",
+						"html_page": "CityBuilder.html?gameplay",
 						"project_category": "City Building Tool",
 						"project_description": "Unity Tools / C#",
 						"project_image": "CityBuilder.png",
 						"active": false
 					},
 					{
-						"html_page": "ProjectileTrajectory.html",
+						"html_page": "ProjectileTrajectory.html?gameplay",
 						"project_category": "Physics Projectile Trajectory",
 						"project_description": "Unity / C#",
 						"project_image": "ProjectileTrajectory.png",
 						"active": true
 					},
 					{
-						"html_page": "BurstParticles.html",
+						"html_page": "BurstParticles.html?gameplay",
 						"project_category": "Burst Particle System",
 						"project_description": "C++ / DirectX",
 						"project_image": "ParticleSystem.png",
 						"active": false
 					},
 					{
-						"html_page": "TileSystem.html",
+						"html_page": "TileSystem.html?gameplay",
 						"project_category": "Tile System",
 						"project_description": "Unity / C#",
 						"project_image": "TileSystem.png",
@@ -266,7 +285,7 @@
 					},
 
 					{
-						"html_page": "RayMarching.html",
+						"html_page": "RayMarching.html?gameplay",
 						"project_category": "Ray Marching",
 						"project_description": "Unity / C# / ShaderLab",
 						"project_image": "Raymarching.png",
@@ -274,6 +293,100 @@
 					}
 				]
 			};
+		}
+		else if (pageDefinition == "tools")
+		{
+			json_portfolio =
+			{
+				"pages": [
+					{
+						"html_page": "Corys.html?tools",
+						"project_category": "Corys",
+						"project_description": "Train Simulations (C++)",
+						"project_image": "Corys.png",
+						"active": true
+					},
+					{
+						"html_page": "Boeing.html?tools",
+						"project_category": "Boeing",
+						"project_description": "Vehicle Maintenance Training (C++ / C#)",
+						"project_image": "Boeing.png",
+						"active": true
+					},
+					{
+						"html_page": "StarlitHorizon.html?tools",
+						"project_category": "Starlit Horizon",
+						"project_description": "Unreal Engine 5 / C++ / Blueprints",
+						"project_image": "StarlitHorizon.png",
+						"active": true
+					},
+					{
+						"html_page": "GameMath.html?tools",
+						"project_category": "Collisions and Quaternions Projects",
+						"project_description": "C++ / DirectX",
+						"project_image": "Collisions.png",
+						"active": true
+					},
+					{
+						"html_page": "GoneFishing.html?tools",
+						"project_category": "Gone Fishing",
+						"project_description": "Unity / C#",
+						"project_image": "GoneFishing.png",
+						"active": false
+					},
+					{
+						"html_page": "SteeringBehaviors.html?tools",
+						"project_category": "Steering Behaviors and Job System",
+						"project_description": "Unity / C#",
+						"project_image": "SteeringBehaviors.png",
+						"active": false
+					},
+					{
+						"html_page": "Pathfinding.html?tools",
+						"project_category": "Pathfinding AI",
+						"project_description": "Unity / C#",
+						"project_image": "PathFinding.png",
+						"active": false
+					},
+					{
+						"html_page": "CityBuilder.html?tools",
+						"project_category": "City Building Tool",
+						"project_description": "Unity Tools / C#",
+						"project_image": "CityBuilder.png",
+						"active": true
+					},
+					{
+						"html_page": "ProjectileTrajectory.html?tools",
+						"project_category": "Physics Projectile Trajectory",
+						"project_description": "Unity / C#",
+						"project_image": "ProjectileTrajectory.png",
+						"active": false
+					},
+					{
+						"html_page": "BurstParticles.html?tools",
+						"project_category": "Burst Particle System",
+						"project_description": "C++ / DirectX",
+						"project_image": "ParticleSystem.png",
+						"active": false
+					},
+					{
+						"html_page": "TileSystem.html?tools",
+						"project_category": "Tile System",
+						"project_description": "Unity / C#",
+						"project_image": "TileSystem.png",
+						"active": true
+					},
+
+					{
+						"html_page": "RayMarching.html?tools",
+						"project_category": "Ray Marching",
+						"project_description": "Unity / C# / ShaderLab",
+						"project_image": "Raymarching.png",
+						"active": false
+					}
+				]
+			};
+		}
 
 		for (i=0; i < json_portfolio.pages.length; i++)
 		{
@@ -393,7 +506,7 @@
 		});
 	}
 	</script>
-
+<!--
 	<script>
 	var slideIndex = [1,1,1,1,1,1,1,1];
 	var slideId = ["mySlides1", "mySlides2", "mySlides3", "mySlides4", "mySlides5", "mySlides6", "mySlides7", "mySlides8"]
@@ -430,7 +543,7 @@
 								},
 								5000);
 	</script>
-	
+-->
 	<!-- Theme JavaScript -->
 	<script src="js/creative.min.js"></script>
 	
